@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ms-transaction
+  profiles:
+    active:
+      - dev #(2)
+  config:
+    import: optional:configserver:http://localhost:9010
+    #import: optional:configserver:http://config-server:9010
+  cloud:
+    config:
+      profile: dev
+
+backend:
+  eureka:
+    account:
+      get-by-id: http://server-gateway:9020/account/{id}
+      update: http://server-gateway:9020/account/update
+      #get-by-id: http://server-gateway/customer/{id}
